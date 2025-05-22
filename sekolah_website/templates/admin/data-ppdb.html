@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Data Pendaftar PPDB - Admin</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+  <!-- SIDEBAR -->
+  <div class="flex min-h-screen">
+    <aside class="w-64 bg-blue-800 text-white flex flex-col py-6 px-4 space-y-6">
+      <h2 class="text-2xl font-bold text-center">Admin SDN 11</h2>
+      <nav class="flex flex-col space-y-2 text-sm">
+        <a href="{{ url_for('admin_dashboard') }}" class="hover:bg-blue-600 px-4 py-2 rounded">🏠 Dashboard</a>
+        <a href="{{ url_for('data_ppdb') }}" class="hover:bg-blue-600 px-4 py-2 rounded">📄 Data PPDB</a>
+        <a href="{{ url_for('data_siswa') }}" class="hover:bg-blue-600 px-4 py-2 rounded">👥 Data Siswa</a>
+        <a href="#" class="hover:bg-blue-600 px-4 py-2 rounded">📰 Kelola Berita</a>
+        <a href="{{ url_for('logout') }}" class="mt-8 bg-red-600 hover:bg-red-500 px-4 py-2 rounded text-center">🚪 Logout</a>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 p-8 overflow-auto">
+      <h1 class="text-3xl font-bold text-blue-800 mb-6">Data Pendaftar PPDB</h1>
+
+      <div class="overflow-auto bg-white rounded-lg shadow">
+        <table class="min-w-full text-sm text-left">
+          <thead class="bg-blue-600 text-white">
+            <tr>
+              <th class="px-4 py-2 border">No</th>
+              <th class="px-4 py-2 border">Nama</th>
+              <th class="px-4 py-2 border">NIK</th>
+              <th class="px-4 py-2 border">Jenis Kelamin</th>
+              <th class="px-4 py-2 border">Tanggal Lahir</th>
+              <th class="px-4 py-2 border">Asal TK</th>
+              <th class="px-4 py-2 border">Status</th>
+              <th class="px-4 py-2 border text-center">Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hover:bg-gray-100">
+              <td class="px-4 py-2 border">1</td>
+              <td class="px-4 py-2 border">Ahmad Rizki</td>
+              <td class="px-4 py-2 border">1234567890123456</td>
+              <td class="px-4 py-2 border">Laki-laki</td>
+              <td class="px-4 py-2 border">12/08/2018</td>
+              <td class="px-4 py-2 border">TK Ceria</td>
+              <td class="px-4 py-2 border text-yellow-600 font-semibold">Belum Diverifikasi</td>
+              <td class="px-4 py-2 border text-center">
+                <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded">Verifikasi</button>
+              </td>
+            </tr>
+            <tr class="hover:bg-gray-100">
+              <td class="px-4 py-2 border">2</td>
+              <td class="px-4 py-2 border">Nur Aini</td>
+              <td class="px-4 py-2 border">6543210987654321</td>
+              <td class="px-4 py-2 border">Perempuan</td>
+              <td class="px-4 py-2 border">04/11/2017</td>
+              <td class="px-4 py-2 border">TK Bintang</td>
+              <td class="px-4 py-2 border text-green-600 font-semibold">Terverifikasi</td>
+              <td class="px-4 py-2 border text-center">
+                <button class="bg-gray-400 text-white px-3 py-1 rounded cursor-not-allowed" disabled>✔</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>

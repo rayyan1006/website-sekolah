@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tambah Siswa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-10 font-sans">
+
+  <div class="max-w-xl mx-auto bg-white p-8 rounded shadow">
+    <h2 class="text-2xl font-bold mb-6 text-blue-800">Form Tambah Siswa</h2>
+
+    <form method="post" class="space-y-4">
+      <input type="text" name="nama" placeholder="Nama Lengkap" class="w-full border px-4 py-2 rounded" required />
+      <input type="text" name="nisn" placeholder="NISN" class="w-full border px-4 py-2 rounded" required />
+      <input type="text" name="kelas" placeholder="Kelas" class="w-full border px-4 py-2 rounded" required />
+
+      <select name="jenis_kelamin" class="w-full border px-4 py-2 rounded" required>
+        <option value="">-- Pilih Jenis Kelamin --</option>
+        <option value="L">Laki-laki</option>
+        <option value="P">Perempuan</option>
+      </select>
+
+      <select name="status" class="w-full border px-4 py-2 rounded">
+        <option value="Aktif">Aktif</option>
+        <option value="Nonaktif">Nonaktif</option>
+      </select>
+
+      <div class="flex justify-between">
+        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">Simpan</button>
+        <a href="{{ url_for('data_siswa') }}" class="text-blue-600 hover:underline">← Kembali</a>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>

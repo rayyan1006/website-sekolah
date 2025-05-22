@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Beranda - SD Negeri 11 Bandar Dua</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- SweetAlert2 untuk Popup -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  
+  
+
+  <!-- Animate CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <link rel="stylesheet" href="css/background.css" />
+
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .dot {
+      height: 10px;
+      width: 10px;
+      background-color: #a50d0d;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 0 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .dot.active {
+      background-color: #393a1b;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- NAVBAR -->
+  <header class="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 text-white shadow-md sticky top-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold tracking-wide">SDN 11 BANDAR DUA</h1>
+      <nav class="space-x-4 text-sm md:text-base">
+        <a href="/" class="hover:text-yellow-300 transition">Beranda</a>
+        <a href="/profil" class="hover:text-yellow-300 transition">Profil</a>
+        <a href="/ppdb" class="hover:text-yellow-300 transition">PPDB</a>
+        <a href="/berita" class="hover:text-yellow-300 transition">Berita</a>
+        <a href="/login" class="hover:text-yellow-300 transition">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="px-4 py-8 max-w-7xl mx-auto">
+    <!-- JUDUL -->
+    <h1 class="text-3xl font-bold text-blue-700 mb-6 text-center md:text-left">Selamat Datang di Website Resmi SD Negeri 11 Bandar Dua</h1>
+
+    <!-- SLIDESHOW -->
+    <div class="relative mb-8">
+      <div class="rounded-xl overflow-hidden h-64 shadow-md">
+        <img id="slide" src="/static/images/WhatsApp Image 2025-05-20 at 16.00.11 (1).jpeg" class="w-full h-full object-cover transition-all duration-700 ease-in-out rounded-xl">
+      </div>
+      <div class="text-center mt-3">
+        <span class="dot active" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+      </div>
+    </div>
+
+    <!-- PENGUMUMAN -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold text-gray-700 mb-3">📢 Pengumuman</h2>
+      <div class="bg-white rounded-xl shadow p-5 border-l-4 border-blue-600">
+        <p class="text-gray-700">Ujian Akhir Semester akan dimulai pada <strong>tanggal </strong>. Mohon persiapan dari seluruh siswa.</p>
+      </div>
+    </section>
+
+    <!-- BERITA -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold text-gray-700 mb-3">📰 Berita Terbaru</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-xl shadow-md p-4 hover:shadow-lg transition">
+          <img src="/static/images/berita 1.jpeg" class="w-full h-40 object-cover rounded-md mb-3">
+          <h3 class="text-lg font-semibold mb-1">upacara HARDIKNAS</h3>
+          <p class="text-sm text-gray-600">Siswa-siswi antusias mengikuti upacara memperingati hari Hardiknas.</p>
+        </div>
+        <!-- Tambah berita lainnya -->
+      </div>
+    </section>
+
+    <!-- GALERI -->
+    <section>
+      <h2 class="text-2xl font-semibold text-gray-700 mb-3">📸 Galeri Kegiatan</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <img src="/static/images/galeri1.jpg" class="w-full h-32 object-cover rounded shadow-md hover:scale-105 transition">
+        <img src="/static/images/galeri2.jpg" class="w-full h-32 object-cover rounded shadow-md hover:scale-105 transition">
+        <img src="/static/images/galeri3.jpg" class="w-full h-32 object-cover rounded shadow-md hover:scale-105 transition">
+        <img src="/static/images/galeri4.jpg" class="w-full h-32 object-cover rounded shadow-md hover:scale-105 transition">
+      </div>
+    </section>
+  </main>
+
+  <!-- POPUP SELAMAT DATANG -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      Swal.fire({
+        title: 'Selamat Datang!',
+        text: 'Terima kasih telah mengunjungi website resmi SD Negeri 11 Bandar Dua',
+        icon: 'success',
+        confirmButtonText: 'Lanjutkan',
+        timer: 4500,
+        timerProgressBar: true,
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      });
+    });
+
+    // SLIDESHOW SCRIPT
+    const slideImages = [
+      "/static/images/galeri1.jpg",
+      "/static/images/galeri2.jpg",
+      "/static/images/galeri3.jpg"
+    ];
+    let current = 0;
+
+    function showSlide(index) {
+      const slide = document.getElementById("slide");
+      slide.src = slideImages[index];
+
+      document.querySelectorAll(".dot").forEach(dot => dot.classList.remove("active"));
+      document.querySelectorAll(".dot")[index].classList.add("active");
+
+      current = index;
+    }
+
+    function nextSlide() {
+      current = (current + 1) % slideImages.length;
+      showSlide(current);
+    }
+
+    function currentSlide(index) {
+      showSlide(index);
+    }
+
+    setInterval(nextSlide, 5000); // Ganti gambar setiap 5 detik
+  </script>
+
+  <!-- FOOTER -->
+  <footer class="mt-12 bg-blue-800 text-white py-6 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+      <div>
+        <h3 class="text-lg font-bold">SD Negeri 11 Bandar Dua</h3>
+        <p class="text-sm">Jl. Pendidikan No. 1, Bandar Dua, Aceh</p>
+        <p class="text-sm"> ULEE GLEE </p>
+      </div>
+      <div class="mt-3 md:mt-0">
+        <p class="text-sm">&copy; 2025 SDN 11 Bandar Dua.@2025 PEULAKAN.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

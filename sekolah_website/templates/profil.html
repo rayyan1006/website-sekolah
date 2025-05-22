@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profil Sekolah - SD Negeri 11 Bandar Dua</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Animate CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Struktur Organisasi Kotak */
+    .org-chart {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .org-box {
+      background-color: #3b82f6; /* Tailwind blue-500 */
+      color: white;
+      border-radius: 0.5rem;
+      padding: 1.25rem 1.75rem;
+      text-align: center;
+      min-width: 220px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+    }
+    .org-box:hover {
+      background-color: #2563eb; /* blue-600 */
+      cursor: default;
+    }
+    .org-box h3 {
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      font-size: 1.2rem;
+    }
+    .org-box p {
+      font-weight: 400;
+      font-size: 1rem;
+      opacity: 0.85;
+      margin: 0;
+    }
+
+    /* Roster Pelajaran */
+    .roster-section {
+      margin-bottom: 4rem;
+    }
+    .roster-title {
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: #2563eb; /* blue-600 */
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .wali-cell {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background-color: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      max-width: 460px;
+      margin: 0 auto 1.5rem auto;
+    }
+    .wali-cell img {
+      width: 60px;
+      height: 60px;
+      border-radius: 9999px;
+      object-fit: cover;
+      border: 3px solid #2563eb;
+    }
+    .wali-cell div {
+      text-align: left;
+    }
+    .wali-cell div p:first-child {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    table.roster-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 auto;
+      max-width: 900px;
+      background: white;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+    }
+    table.roster-table th, table.roster-table td {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    table.roster-table th {
+      background-color: #2563eb;
+      color: white;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- NAVBAR -->
+  <header class="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 text-white shadow-md sticky top-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold tracking-wide">SDN 11 BANDAR DUA</h1>
+      <nav class="space-x-4 text-sm md:text-base">
+        <a href="/" class="hover:text-yellow-300 transition">Beranda</a>
+        <a href="/profil" class="hover:text-yellow-300 transition font-semibold underline">Profil</a>
+        <a href="/ppdb" class="hover:text-yellow-300 transition">PPDB</a>
+        <a href="/berita" class="hover:text-yellow-300 transition">Berita</a>
+        <a href="/login" class="hover:text-yellow-300 transition">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="px-4 py-8 max-w-7xl mx-auto">
+    <h1 class="text-3xl font-bold text-blue-700 mb-8 text-center md:text-left">Profil Sekolah</h1>
+
+    <!-- Visi & Misi -->
+    <section class="mb-10 bg-white rounded-xl shadow p-6 border-l-4 border-blue-600">
+      <h2 class="text-2xl font-semibold mb-4">Visi</h2>
+      <p class="text-gray-700 mb-6">Menjadi sekolah dasar unggulan yang menghasilkan peserta didik berakhlak mulia, cerdas, dan kreatif.</p>
+
+      <h2 class="text-2xl font-semibold mb-4">Misi</h2>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>Meningkatkan kualitas pendidikan berbasis karakter dan teknologi.</li>
+        <li>Menciptakan lingkungan belajar yang kondusif dan menyenangkan.</li>
+        <li>Mendorong partisipasi aktif orang tua dan masyarakat dalam pendidikan.</li>
+      </ul>
+    </section>
+
+    <!-- Sejarah Sekolah -->
+    <section class="mb-10 bg-white rounded-xl shadow p-6 border-l-4 border-green-600">
+      <h2 class="text-2xl font-semibold mb-4">Sejarah Sekolah</h2>
+      <p class="text-gray-700">SD Negeri 11 Bandar Dua didirikan pada tahun 1980 dengan tujuan memberikan pendidikan dasar berkualitas kepada anak-anak di wilayah Bandar Dua. Seiring waktu, sekolah ini terus berkembang dengan fasilitas lengkap dan tenaga pendidik yang profesional.</p>
+    </section>
+
+    <!-- Fasilitas -->
+    <section class="mb-10 bg-white rounded-xl shadow p-6 border-l-4 border-yellow-600">
+      <h2 class="text-2xl font-semibold mb-4">Fasilitas</h2>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>Ruang Kelas Modern dengan Multimedia</li>
+        <li>Perpustakaan Lengkap</li>
+        <li>Laboratorium Komputer</li>
+        <li>Lapangan Olahraga</li>
+        <li>Ruang Kesenian dan Musik</li>
+      </ul>
+    </section>
+
+    <!-- Struktur Organisasi Kotak -->
+    <section class="mb-10 bg-white rounded-xl shadow p-6 border-l-4 border-red-600">
+      <h2 class="text-2xl font-semibold mb-6 text-center text-red-700">Struktur Organisasi & Guru</h2>
+      <div class="org-chart">
+        <div class="org-box">
+          <h3>TARWIYAH S.Pd</h3>
+          <p>Kepala Sekolah</p>
+        </div>
+        <div class="org-box">
+          <h3>.........</h3>
+          <p>Wakil Kepala Sekolah</p>
+        </div>
+        <div class="org-box">
+          <h3>..........</h3>
+          <p>Guru Matematika</p>
+        </div>
+        <div class="org-box">
+          <h3>..........</h3>
+          <p>Guru Bahasa Indonesia</p>
+        </div>
+        <div class="org-box">
+          <h3>.........</h3>
+          <p>Guru IPA</p>
+        </div>
+         <div class="org-box">
+          <h3>.........</h3>
+          <p>Guru IPS</p>
+      </div>
+    </section>
+
+    <!-- Roster Pelajaran -->
+    <section class="roster-section bg-white rounded-xl shadow p-6 border-l-4 border-purple-600">
+      <h2 class="roster-title">Roster Pelajaran</h2>
+
+      <!-- Kelas 1 -->
+      <h3 class="text-xl font-semibold mb-2 text-center">Kelas 1</h3>
+      <div class="wali-cell">
+        <img src="/static/images/walikelas1.jpg" alt="Wali Kelas 1" />
+        <div>
+          <p>Nama Wali Kelas: Ibu </p>
+          <p>Wali Kelas Kelas 1 </p>
+        </div>
+      </div>
+      <table class="roster-table mb-8">
+        <thead>
+          <tr>
+            <th>Hari</
+th>
+<th>07:00 - 07:45</th>
+<th>07:45 - 08:30</th>
+<th>08:30 - 09:15</th>
+<th>09:15 - 10:00</th>
+<th>10:00 - 10:30</th>
+<th>10:30 - 11:15</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Senin</td>
+<td>Matematika</td>
+<td>Bahasa Indonesia</td>
+<td>IPA</td>
+<td>Istirahat</td>
+<td>Seni Budaya</td>
+<td>Olahraga</td>
+</tr>
+<tr>
+<td>Selasa</td>
+<td>Bahasa Inggris</td>
+<td>Matematika</td>
+<td>IPS</td>
+<td>Istirahat</td>
+<td>Agama</td>
+<td>Prakarya</td>
+</tr>
+<tr>
+<td>Rabu</td>
+<td>Bahasa Indonesia</td>
+<td>Matematika</td>
+<td>IPA</td>
+<td>Istirahat</td>
+<td>Seni Budaya</td>
+<td>Olahraga</td>
+</tr>
+<tr>
+<td>Kamis</td>
+<td>Agama</td>
+<td>Bahasa Inggris</td>
+<td>Matematika</td>
+<td>Istirahat</td>
+<td>IPS</td>
+<td>Prakarya</td>
+</tr>
+<tr>
+<td>Jumat</td>
+<td>Bahasa Indonesia</td>
+<td>Matematika</td>
+<td>IPA</td>
+<td>Istirahat</td>
+<td>Agama</td>
+<td>Pengembangan Diri</td>
+</tr>
+</tbody>
+</table>
+
+
+
+  <!-- Kelas 2 -->
+  <h3 class="text-xl font-semibold mb-2 text-center">Kelas 2</h3>
+  <div class="wali-cell">
+    <img src="/static/images/walikelas2.jpg" alt="Wali Kelas 2" />
+    <div>
+      <p>Nama Wali Kelas: Bapak </p>
+      <p>Wali Kelas Kelas 2 </p>
+    </div>
+  </div>
+  <table class="roster-table">
+    <thead>
+      <tr>
+        <th>Hari</th>
+        <th>07:00 - 07:45</th>
+        <th>07:45 - 08:30</th>
+        <th>08:30 - 09:15</th>
+        <th>09:15 - 10:00</th>
+        <th>10:00 - 10:30</th>
+        <th>10:30 - 11:15</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Senin</td>
+        <td>Bahasa Indonesia</td>
+        <td>Matematika</td>
+        <td>IPA</td>
+        <td>Istirahat</td>
+        <td>Olahraga</td>
+        <td>Seni Budaya</td>
+      </tr>
+      <tr>
+        <td>Selasa</td>
+        <td>Matematika</td>
+        <td>Bahasa Inggris</td>
+        <td>IPS</td>
+        <td>Istirahat</td>
+        <td>Agama</td>
+        <td>Prakarya</td>
+      </tr>
+      <tr>
+        <td>Rabu</td>
+        <td>Bahasa Indonesia</td>
+        <td>Matematika</td>
+        <td>IPA</td>
+        <td>Istirahat</td>
+        <td>Seni Budaya</td>
+        <td>Olahraga</td>
+      </tr>
+      <tr>
+        <td>Kamis</td>
+        <td>Agama</td>
+        <td>Bahasa Inggris</td>
+        <td>Matematika</td>
+        <td>Istirahat</td>
+        <td>IPS</td>
+        <td>Prakarya</td>
+      </tr>
+      <tr>
+        <td>Jumat</td>
+        <td>Bahasa Indonesia</td>
+        <td>Matematika</td>
+        <td>IPA</td>
+        <td>Istirahat</td>
+        <td>Agama</td>
+        <td>Pengembangan Diri
+        </td>
+      </tr>
+    </tbody>
+  </table>
+        <!-- Kelas 3 -->
+      <h3 class="text-xl font-semibold mb-2 text-center">Kelas 3</h3>
+      <div class="wali-cell">
+        <img src="/static/images/ryn.jpg" alt="Wali Kelas 3" />
+        <div>
+          <p>Nama Wali Kelas: MUHAMMAD RAYYAN S.Pd</p>
+          <p>Wali Kelas Kelas 3 </p>
+        </div>
+      </div>
+      <table class="roster-table mb-8">
+        <thead>
+          <tr>
+            <th>Hari</
+th>
+<th>07:00 - 07:45</th>
+<th>07:45 - 08:30</th>
+<th>08:30 - 09:15</th>
+<th>09:15 - 10:00</th>
+<th>10:00 - 10:30</th>
+<th>10:30 - 11:15</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Senin</td>
+<td>Matematika</td>
+<td>Bahasa Indonesia</td>
+<td>IPA</td>
+<td>Istirahat</td>
+<td>Seni Budaya</td>
+<td>Olahraga</td>
+</tr>
+<tr>
+<td>Selasa</td>
+<td>Bahasa Inggris</td>
+<td>Matematika</td>
+<td>IPS</td>
+<td>Istirahat</td>
+<td>Agama</td>
+<td>Prakarya</td>
+</tr>
+<tr>
+<td>Rabu</td>
+<td>Bahasa Indonesia</td>
+<td>Matematika</td>
+<td>IPA</td>
+<td>Istirahat</td>
+<td>Seni Budaya</td>
+<td>Olahraga</td>
+</tr>
+<tr>
+<td>Kamis</td>
+<td>Agama</td>
+<td>Bahasa Inggris</td>
+<td>Matematika</td>
+<td>Istirahat</td>
+<td>IPS</td>
+<td>Prakarya</td>
+</tr>
+<tr>
+<td>Jumat</td>
+<td>Bahasa Indonesia</td>
+<td>Matematika</td>
+<td>IPA</td>
+<td>Istirahat</td>
+<td>Agama</td>
+<td>Pengembangan Diri</td>
+</tr>
+</tbody>
+</table>
+        <!-- Kelas 4 -->
+      <h3 class="text-xl font-semibold mb-2 text-center">Kelas 4</h3>
+      <div class="wali-cell">
+        <img src="/static/images/ryn.jpg" alt="Wali Kelas 4" />
+        <div>
+          <p>Nama Wali Kelas: MUHAMMAD RAYYAN S.Pd</p>
+          <p>Wali Kelas Kelas 4 </p>
+        </div>
+      </div>
+      <table class="roster-table mb-8">
+        <thead>
+          <tr>
+            <th>Hari</
+th>
+<th>07:00 - 07:45</th>
+<th>07:45 - 08:30</th>
+<th>08:30 - 09:15</th>
+<th>09:15 - 10:00</th>
+<th>10:00 - 10:30</th>
+<th>10:30 - 11:15</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Senin</td>
+<td>Matematika</td>
+<td>Bahasa Indonesia</td>
+<td>IPA</td>
+<td>Istirahat</td>
+<td>Seni Budaya</td>
+<td>Olahraga</td>
+</tr>
+<tr>
+<td>Selasa</td>
+<td>Bahasa Inggris</td>
+<td>Matematika</td>
+<td>IPS</td>
+<td>Istirahat</td>
+<td>Agama</td>
+<td>Prakarya</td>
+</tr>
+<tr>
+<td>Rabu</td>
+<td>Bahasa Indonesia</td>
+<td>Matematika</td>
+<td>IPA</td>
+<td>Istirahat</td>
+<td>Seni Budaya</td>
+<td>Olahraga</td>
+</tr>
+<tr>
+<td>Kamis</td>
+<td>Agama</td>
+<td>Bahasa Inggris</td>
+<td>Matematika</td>
+<td>Istirahat</td>
+<td>IPS</td>
+<td>Prakarya</td>
+</tr>
+<tr>
+<td>Jumat</td>
+<td>Bahasa Indonesia</td>
+<td>Matematika</td>
+<td>IPA</td>
+<td>Istirahat</td>
+<td>Agama</td>
+<td>Pengembangan Diri</td>
+</tr>
+</tbody>
+</table>
+        <!-- Kelas 5 -->
+      <h3 class="text-xl font-semibold mb-2 text-center">Kelas 5</h3>
+      <div class="wali-cell">
+        <img src="/static/images/ryn.jpg" alt="Wali Kelas 5" />
+        <div>
+          <p>Nama Wali Kelas: MUHAMMAD RAYYAN S.Pd</p>
+          <p>Wali Kelas Kelas 5 </p>
+        </div>
+      </div>
+      <table class="roster-table mb-8">
+        <thead>
+          <tr>
+            <th>Hari</
+th>
+<th>07:00 - 07:46</th>
+<th>07:45 - 08:30</th>
+<th>08:30 - 09:15</th>
+<th>09:15 - 10:00</th>
+<th>10:00 - 10:30</th>
+<th>10:30 - 11:15</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Senin</td>
+<td>Matematika</td>
+<td>Bahasa Indonesia</td>
+<td>IPA</td>
+<td>Istirahat</td>
+<td>Seni Budaya</td>
+<td>Olahraga</td>
+</tr>
+<tr>
+<td>Selasa</td>
+<td>Bahasa Inggris</td>
+<td>Matematika</td>
+<td>IPS</td>
+<td>Istirahat</td>
+<td>Agama</td>
+<td>Prakarya</td>
+</tr>
+<tr>
+<td>Rabu</td>
+<td>Bahasa Indonesia</td>
+<td>Matematika</td>
+<td>IPA</td>
+<td>Istirahat</td>
+<td>Seni Budaya</td>
+<td>Olahraga</td>
+</tr>
+<tr>
+<td>Kamis</td>
+<td>Agama</td>
+<td>Bahasa Inggris</td>
+<td>Matematika</td>
+<td>Istirahat</td>
+<td>IPS</td>
+<td>Prakarya</td>
+</tr>
+<tr>
+<td>Jumat</td>
+<td>Bahasa Indonesia</td>
+<td>Matematika</td>
+<td>IPA</td>
+<td>Istirahat</td>
+<td>Agama</td>
+<td>Pengembangan Diri</td>
+</tr>
+</tbody>
+</table>
+        <!-- Kelas 6-->
+      <h3 class="text-xl font-semibold mb-2 text-center">Kelas 6</h3>
+      <div class="wali-cell">
+        <img src="/static/images/ryn.jpg" alt="Wali Kelas 6" />
+        <div>
+          <p>Nama Wali Kelas: tarwiyah S.Pd</p>
+          <p>Wali Kelas Kelas 6 </p>
+        </div>
+      </div>
+      <table class="roster-table mb-8">
+        <thead>
+          <tr>
+            <th>Hari</
+th>
+<th>07:00 - 07:45</th>
+<th>07:45 - 08:30</th>
+<th>08:30 - 09:15</th>
+<th>09:15 - 10:00</th>
+<th>10:00 - 10:30</th>
+<th>10:30 - 11:30</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Senin</td>
+<td>Matematika</td>
+<td>Bahasa Indonesia</td>
+<td>IPA</td>
+<td>Istirahat</td>
+<td>Seni Budaya</td>
+<td>Olahraga</td>
+</tr>
+<tr>
+<td>Selasa</td>
+<td>Bahasa indonesia</td>
+<td>Matematika</td>
+<td>IPS</td>
+<td>Istirahat</td>
+<td>Agama</td>
+<td>Prakarya</td>
+</tr>
+<tr>
+<td>Rabu</td>
+<td>Bahasa Inggris</td>
+<td>Matematika</td>
+<td>IPA</td>
+<td>Istirahat</td>
+<td>Seni Budaya</td>
+<td>Olahraga</td>
+</tr>
+<tr>
+<td>Kamis</td>
+<td>Agama</td>
+<td>Bahasa Inggris</td>
+<td>Matematika</td>
+<td>Istirahat</td>
+<td>IPS</td>
+<td>Prakarya</td>
+</tr>
+<tr>
+<td>Jumat</td>
+<td>Bahasa Indonesia</td>
+<td>Matematika</td>
+<td>IPA</td>
+<td>Istirahat</td>
+<td>Agama</td>
+<td>Pengembangan Diri</td>
+</tr>
+</tbody>
+</table>
+</section>
+</main> <!-- FOOTER --> <footer class="bg-blue-700 text-white text-center py-6 mt-12"> <p>&copy; 2025 SD Negeri 11 Bandar Dua. All rights reserved.</p> </footer> </body> </html> ```

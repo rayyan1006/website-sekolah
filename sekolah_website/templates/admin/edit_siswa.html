@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Edit Siswa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6 font-sans">
+
+  <div class="max-w-xl mx-auto bg-white p-6 rounded shadow">
+    <h1 class="text-2xl font-bold mb-4">Edit Data Siswa</h1>
+
+    <form method="POST" action="">
+      <label class="block mb-2 font-semibold">Nama</label>
+      <input type="text" name="nama" value="{{ siswa['nama'] }}" class="w-full p-2 border rounded mb-4" required />
+
+      <label class="block mb-2 font-semibold">NISN</label>
+      <input type="text" name="nisn" value="{{ siswa['nisn'] }}" class="w-full p-2 border rounded mb-4" required />
+
+      <label class="block mb-2 font-semibold">Kelas</label>
+      <input type="text" name="kelas" value="{{ siswa['kelas'] }}" class="w-full p-2 border rounded mb-4" required />
+
+      <label class="block mb-2 font-semibold">Jenis Kelamin</label>
+      <select name="jenis_kelamin" class="w-full p-2 border rounded mb-4">
+        <option value="">-- Pilih Jenis Kelamin --</option>
+        <option value="Laki-laki" {% if siswa['jenis_kelamin'] == 'Laki-laki' %}selected{% endif %}>Laki-laki</option>
+        <option value="Perempuan" {% if siswa['jenis_kelamin'] == 'Perempuan' %}selected{% endif %}>Perempuan</option>
+      </select>
+
+      <label class="block mb-2 font-semibold">Status</label>
+      <select name="status" class="w-full p-2 border rounded mb-6">
+        <option value="">-- Pilih Status --</option>
+        <option value="Aktif" {% if siswa['status'] == 'Aktif' %}selected{% endif %}>Aktif</option>
+        <option value="Tidak Aktif" {% if siswa['status'] == 'Tidak Aktif' %}selected{% endif %}>Tidak Aktif</option>
+      </select>
+
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Simpan Perubahan</button>
+      <a href="{{ url_for('data_siswa') }}" class="ml-4 text-gray-600 hover:underline">Batal</a>
+    </form>
+  </div>
+
+</body>
+</html>
